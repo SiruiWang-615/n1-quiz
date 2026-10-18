@@ -1,0 +1,8 @@
+原作者：egg rolls
+来源：https://github.com/5mdld/anki-jlpt-decks
+下载版本：26.09.06，v3.5
+许可：CC BY-NC 4.0 https://creativecommons.org/licenses/by-nc/4.0/
+本地修改：筛选N1词条，解析为JSON/CSV，音频以哈希重命名。未执行原卡片脚本。
+音频与用例保持原文，未逐条人工校对。
+
+网页适配：解析词条，按词语和假名匹配现有ID，音频合并分包按偏移播放。
