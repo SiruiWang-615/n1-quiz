@@ -647,4 +647,18 @@ $('practiceNav').onclick=openPractice;$('homePractice').onclick=openPractice;$('
 function refreshHomeAction(){const action=N1HomeAction.choose(study.pausedQuiz,study.wordSession,new Set(questions.keys()));$('homeFocusLabel').textContent=action==='new'?'开始今天的10道题':action==='quiz'?'继续上次的练习':'继续上次背词';$('homeFocusHint').textContent=action==='new'?'十道就好，做完就收工。':'不用重新开始，接着刚才的地方。'}
 $('homeFocusStart').onclick=()=>{const action=N1HomeAction.choose(study.pausedQuiz,study.wordSession,new Set(questions.keys()));if(action==='quiz'){$('resumeQuiz').click();return}if(action==='words'){N1Vocabulary.resume();return}const ids=N1HomeAction.quickIds([...questions.values()].filter(q=>['词汇','语法'].includes(q.category)),state.records,10);if(!ids.length){toast('这里暂时没有可练习的题目，可以在更多功能中选择试卷。');return}start(ids,'practice')};
 $('moreNav').onclick=()=>{if(!leaveActive())return;stats();N1Vocabulary.refresh();view('hub')};
+</script>
+<style>
+.itVersionBar{gap:12px;align-items:start;flex-wrap:wrap}
+.itVersionBar>label{flex:0 1 280px;min-width:160px}
+#itCard .itTopPicker{flex:0 1 320px;min-width:0;max-width:100%;margin:0;padding:0;background:transparent}
+#itCard .itTopPicker>summary{display:none}
+#itCard .itTopPicker .itPicker{margin:0;gap:3px;min-width:0}
+#itCard .itTopPicker select{width:100%;min-width:0;box-sizing:border-box;padding:7px 9px}
+#itCard .itTopPicker>details{margin:4px 0 0;font-size:12px}
+.itVersionBar>button{margin-top:20px}
+@media(max-width:700px){#itCard .itTopPicker,.itVersionBar>label{flex:1 1 100%}.itVersionBar>button{margin-top:0}}
+</style>
+<script>
+{const picker=document.getElementById('itSelect')?.closest('.itSettings');const bar=document.querySelector('.itVersionBar');if(picker&&bar){bar.prepend(picker);picker.open=true;picker.classList.add('itTopPicker')}}
 </script></body></html>
